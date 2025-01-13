@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { Twitter, Linkedin, ArrowUpRight, Menu, X } from 'lucide-react'
+import Link from 'next/link'  // Add this import
 
 interface Article {
   title: string
@@ -38,7 +39,7 @@ const Blog = () => {
     }
   ]
 
-  const about = `I'm a product designer and writer exploring the intersections of design, 
+  const about = `I&apos;m a product designer and writer exploring the intersections of design, 
     technology, and philosophy. Currently working on projects that bridge the gap 
     between user experience and strategic thinking.`
 
@@ -48,14 +49,14 @@ const Blog = () => {
       <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-2xl mx-auto px-6">
           <nav className="flex justify-between items-center h-16">
-            <a href="/" className="text-lg font-medium hover:text-gray-600 transition-colors">
+            <Link href="/" className="text-lg font-medium hover:text-gray-600 transition-colors">
               Your Name
-            </a>
+            </Link>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="/about" className="text-gray-600 hover:text-black transition-colors">About</a>
-              <a href="/writing" className="text-gray-600 hover:text-black transition-colors">Writing</a>
+              <Link href="/about" className="text-gray-600 hover:text-black transition-colors">About</Link>
+              <Link href="/writing" className="text-gray-600 hover:text-black transition-colors">Writing</Link>
               <button className="px-4 py-1.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
                 Contact
               </button>
@@ -75,8 +76,8 @@ const Blog = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-100 px-6 py-4">
             <div className="flex flex-col space-y-4">
-              <a href="/about" className="text-gray-600 hover:text-black transition-colors">About</a>
-              <a href="/writing" className="text-gray-600 hover:text-black transition-colors">Writing</a>
+              <Link href="/about" className="text-gray-600 hover:text-black transition-colors">About</Link>
+              <Link href="/writing" className="text-gray-600 hover:text-black transition-colors">Writing</Link>
               <button className="px-4 py-1.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
                 Contact
               </button>
@@ -89,24 +90,22 @@ const Blog = () => {
         {/* Hero Section */}
         <section className="mb-24">
           <div className="relative">
-            <h1 className="text-4xl font-normal mb-8 leading-relaxed">
-              {about}
-            </h1>
+            <h1 className="text-4xl font-normal mb-8 leading-relaxed" dangerouslySetInnerHTML={{ __html: about }} />
             <div className="flex space-x-4">
-              <a 
+              <Link 
                 href="#" 
                 className="inline-flex items-center text-gray-600 hover:text-black transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="#" 
                 className="inline-flex items-center text-gray-600 hover:text-black transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -123,7 +122,7 @@ const Blog = () => {
                 key={index} 
                 className="group relative"
               >
-                <a 
+                <Link 
                   href={article.url}
                   className="block group-hover:bg-gray-50 -mx-6 px-6 py-4 rounded-xl transition-colors"
                 >
@@ -141,7 +140,7 @@ const Blog = () => {
                     <span className="text-gray-300">•</span>
                     <span className="text-gray-500">{article.type}</span>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -157,7 +156,7 @@ const Blog = () => {
             </li>
             <li className="flex items-start">
               <span className="block w-2 h-2 mt-2 mr-4 rounded-full bg-blue-400" />
-              Reading "The Design of Everyday Things"
+              Reading &quot;The Design of Everyday Things&quot;
             </li>
             <li className="flex items-start">
               <span className="block w-2 h-2 mt-2 mr-4 rounded-full bg-purple-400" />
@@ -192,12 +191,12 @@ const Blog = () => {
       <footer className="max-w-2xl mx-auto px-6 py-8 border-t border-gray-100">
         <div className="flex justify-between items-center text-sm text-gray-500">
           <span>© 2025</span>
-          <a 
+          <Link 
             href="mailto:your@email.com" 
             className="hover:text-black transition-colors"
           >
             your@email.com
-          </a>
+          </Link>
         </div>
       </footer>
     </div>
